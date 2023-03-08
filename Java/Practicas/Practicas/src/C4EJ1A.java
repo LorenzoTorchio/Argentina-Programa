@@ -1,10 +1,8 @@
-public class EJ1bC3 {
-    public static void main(String[] args) {
-        int numeros[] = {1,2,3};
+public class C4EJ1A {
+    public static void main(int n1, int n2, int n3, int orden) {
+        int numeros[] = {n1,n2,n3};
         int numerosOrdenados[] = new int[numeros.length];
         int aux = 0;
-        int orden = -1;
-
         if (orden > 0){
             for(int j = 1; j < numeros.length +1; j++) {
                 int max = 0;
@@ -36,5 +34,5 @@ public class EJ1bC3 {
             System.out.println(numerosOrdenados[i]);
         }
     }
-    }
+}
 

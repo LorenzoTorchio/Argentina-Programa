@@ -1,4 +1,4 @@
-public class EJ1C1 {
+public class C1EJ1 {
     public static void main(String[] args) {
         int a = 0;
         int b = 10;

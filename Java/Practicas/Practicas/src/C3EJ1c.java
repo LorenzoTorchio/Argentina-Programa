@@ -1,4 +1,4 @@
-public class EJ1cC3 { public static void main(String[] args) {
+public class C3EJ1c { public static void main(String[] args) {
     int numeros[] = new int[5];
     int x = 0;
     int sum = 0;

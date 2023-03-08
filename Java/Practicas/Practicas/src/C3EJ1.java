@@ -1,4 +1,4 @@
-public class EJ1C3 {
+public class C3EJ1 {
     public static void main(String[] args) {
         String palabra = "palabra";
         char letra = 'a';

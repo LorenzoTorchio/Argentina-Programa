@@ -1,4 +1,4 @@
-public class EJ2C1 {
+public class C1EJ2 {
     public static void main(String[] args) {
         int ingMen = 300000;
         int autNuev = 2;

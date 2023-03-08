@@ -1,4 +1,4 @@
-public class EJ2C3 {public static void main(String[] args) {
+public class C3EJ2 {public static void main(String[] args) {
     String abecedario = "abcdefghijklmnñopqrstuvwxyz";
     int desplazamiento = 1;
     String palabra = "palabra";
