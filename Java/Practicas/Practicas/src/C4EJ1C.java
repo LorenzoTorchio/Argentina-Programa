@@ -2,47 +2,58 @@ import java.util.Scanner;
 
 public class C4EJ1C {
     public static void main(String[] args) {
-            int numeros[] = {n1,n2,n3};
-            int numerosOrdenados[] = new int[numeros.length];
+        //creo dos array de enteros para la entrada y salida
+        int[] numeros = new int[3];
+        int[] numerosOrdenados = new int[numeros.length];
+
+        //creo el scanner en caso de que los argumentos no se ingresen
+        Scanner teclado = new Scanner(System.in);
+
+        //asigno los numeros y el orden de los argumentos a variables
+        for (int i = 0; i < numeros.length; i++) {
+            if(args[i].equals("")){
+                numeros[i] = teclado.nextInt();
+            }
+                numeros[i] = Integer.parseInt(args[i]);
+        }
+
+        String orden = args[3];
+        if(args[3].equals("")) {
+            System.out.println("Escriba en que orden desea ordenar (ascendente, descendente)");
+            orden = teclado.nextLine();
+        }
+
+        //itero para asignar al nuevo array los numeros ordenados mo
+        for (int i = 0; i < numeros.length; i++) {
+
+            //inicializo una variable comparar y almacenar el maximo
+            int max = 0;
+            //y otra para almacenar el indice del maximo
             int aux = 0;
-            int orden = -1;
 
-            String n1 = args[0];
-            Scanner teclado = new Scanner(System.in);
-            if (args[0].equals("")) {
-               n1 = interger.parseInt(teclado.nextline());
-            }
-
-
-            if (orden > 0){
-                for(int j = 1; j < numeros.length +1; j++) {
-                    int max = 0;
-                    for (int i = 0; i < numeros.length; i++) {
-                        if (max < numeros[i]) {
-                            max = numeros[i];
-                            aux = i;
-                        }
-                    }
-                    numeros[aux] = 0;
-                    numerosOrdenados[numeros.length - j] = max;
-                }
-
-            } else {
-                for (int j = 0; j < numeros.length; j++) {
-                    int max = 0;
-                    for (int i = 0; i < numeros.length; i++) {
-                        if (max < numeros[i]) {
-                            max = numeros[i];
-                            aux = i;
-                        }
-                    }
-                    numeros[aux] = 0;
-                    numerosOrdenados[j] = max;
+            //itero para encontrar el maximo
+            for (int j = 0; j < numeros.length; j++) {
+                if (max < numeros[j]) {
+                    max = numeros[j];
+                    aux = j;
                 }
             }
 
-            for(int i = 0; i < numeros.length; i++){
-                System.out.println(numerosOrdenados[i]);
+            //al encontrar el maximo lo anulo para encontrar el siguiente
+            numeros[aux] = 0;
+
+            //asigno al nuevo array dependiendo el orden deseado
+            if (orden.equals("descendente")) {
+                numerosOrdenados[i] = max;
+            }
+            if (orden.equals("ascendente")) {
+                numerosOrdenados[numeros.length - i - 1] = max;
             }
         }
+
+        //y los imprimo
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println(numerosOrdenados[i]);
+        }
     }
+}
