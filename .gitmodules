@@ -1,3 +1,6 @@
 [submodule "Java/Documentacion/Java/Documentacion/CursoDeJava"]
 	path = Java/Documentacion/Java/Documentacion/CursoDeJava
 	url = https://github.com/facundouferer/CursoDeJava
+[submodule "Java/Documentacion/CursoDeJava"]
+	path = Java/Documentacion/CursoDeJava
+	url = https://github.com/facundouferer/CursoDeJava
