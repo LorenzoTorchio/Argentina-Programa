@@ -1,13 +1,17 @@
-//codificación o decodificación, el valor del desplazo, y 2 archivos, uno para la entrada y
-//otro para la salida
+
+import java.io.*;
 
 public class C4EJ3 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String operacion = args[0];
+        int desplazamiento = Integer.parseInt(args[1]);
+        String archivoEntrada = args[2];
+        String archivoSalida = args[3];
         String abecedario = "abcdefghijklmnñopqrstuvwxyz";
-        int desplazamiento =  Integer.parseInt(args[1]);
-        String palabra = args[2];
-        String resultado = args[3];
+        String resultado = "";
+
+        BufferedReader archivoI = new BufferedReader(new FileReader(archivoEntrada));
+        String palabra = archivoI.readLine();
 
         if(operacion.equals("codificacion")) {
             for (int i = 0; i < palabra.length(); i++) {
@@ -23,11 +27,16 @@ public class C4EJ3 {
             }
         }
 
-        if(succes){
-            System.out.println("operacion exitosa")
-        } else {
-            System.out.println("operacion fallida");
+        try {
+            FileWriter myWriter = new FileWriter(archivoSalida);
+            myWriter.write(resultado);
+            myWriter.close();
+            System.out.println("Escritura Exitosa");
+        } catch (IOException e) {
+            System.out.println("Escritura Fallida");
+            e.printStackTrace();
         }
+
     }
 }
 
