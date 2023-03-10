@@ -1,5 +1,7 @@
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class C4EJ3 {
     public static void main(String[] args) throws IOException {
@@ -16,14 +18,14 @@ public class C4EJ3 {
         if(operacion.equals("codificacion")) {
             for (int i = 0; i < palabra.length(); i++) {
                 int posicionLetra = abecedario.indexOf(palabra.charAt(i)) + desplazamiento;
-                resultado = resultado + abecedario.charAt(posicionLetra);
+                resultado +=  abecedario.charAt(posicionLetra);
             }
         }
 
         if(operacion.equals("decodificaion")) {
             for (int i = 0; i < palabra.length(); i++) {
                 int posicionLetra = abecedario.indexOf(palabra.charAt(i)) - desplazamiento;
-                resultado = resultado + abecedario.charAt(posicionLetra);
+                resultado += abecedario.charAt(posicionLetra);
             }
         }
 
