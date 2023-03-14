@@ -1,6 +1,4 @@
 package paquete;
 
-public class Pronostico
-{
-    
+public class Pronostico{
 }
