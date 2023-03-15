@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -85,7 +84,7 @@ public class C5EJ1 {
 
         long l = Files.lines(archivo).count();
 
-        int dimension = (int)l;
+        int dimension = (int) l;
 
         Carrito carrito = new Carrito(dimension);
         int index = 0;
