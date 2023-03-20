@@ -13,12 +13,6 @@ public class Pronostico{
     public void setResultado(ResultadoEnum resultado){
         this.resultado = resultado;
     }
-    public Partido getPartido() {
-        return partido;
-    }
-    public Equipo getEquipo(){
-        return equipo;
-    }
     public ResultadoEnum getResultado(){
         return resultado;
     }
