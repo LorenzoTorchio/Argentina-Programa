@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 arg,x,0,0,per
 mex,0,0,x,col
+=======
+arg,x,0,0,per
+mex,0,0,x,col
+>>>>>>> origin/main
 chi,0,x,0,uru
