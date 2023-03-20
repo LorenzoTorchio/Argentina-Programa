@@ -1,15 +1,29 @@
 package paquete;
 
-//supuestamente el metodo puntos entra en esta clase
-
 public class Pronostico{
     private Partido partido;
     private Equipo equipo;
     private ResultadoEnum resultado;
-
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+    public void setPartido(Partido partido){
         this.partido = partido;
+    }
+    public void setEquipo(Equipo equipo){
         this.equipo = equipo;
+    }
+    public void setResultado(ResultadoEnum resultado){
         this.resultado = resultado;
+    }
+    public Partido getPartido() {
+        return partido;
+    }
+    public Equipo getEquipo(){
+        return equipo;
+    }
+    public ResultadoEnum getResultado(){
+        return resultado;
+    }
+    public boolean Punto() {
+        return getResultado().equals(partido.Resultado(equipo));
+
     }
 }
