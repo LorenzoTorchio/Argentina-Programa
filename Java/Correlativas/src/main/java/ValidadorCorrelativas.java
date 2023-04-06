@@ -52,9 +52,11 @@ public class ValidadorCorrelativas  {
                     EscribirLinea("materia inexistente");
                     continue;
                 }
-            correlativas(materias, materias.get(Materia.getIndex(materia,materias)));
+            setCorrelativas(materias, materias.get(Materia.getIndex(materia,materias)));
 
-            Inscripcion insc = new Inscripcion();
+            Inscripcion insc = new Inscripcion(alumno, materia);
+
+
             if(insc.aprobada()){
                 linea = linea.concat(",aprobada");
             } else {
@@ -64,11 +66,11 @@ public class ValidadorCorrelativas  {
         }
     }
 
-    private static void correlativas(ArrayList<Materia> materias, Materia materia){
+    private static void setCorrelativas(ArrayList<Materia> materias, Materia materia){
         if(!materia.getNombre().endsWith("I")){
             for (Materia value : materias) {
-                if (value.getNombre().startsWith(materia.getNombre().substring(0, 5)) && !materia.equals(value)) {
-                    materia.setCorrelativa(materia);
+                if (value.getNombre().startsWith(materia.getNombre().substring(0, value.getNombre().length()-3)) && !materia.equals(value)) {
+                    materia.setCorrelativa(value);
                 }
             }
         }

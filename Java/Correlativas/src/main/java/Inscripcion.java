@@ -4,7 +4,9 @@ public class Inscripcion {
     private Alumno alumno;
     private Materia materia;
 
-    public Inscripcion(){
+    public Inscripcion(Alumno alumno, Materia materia){
+        this.alumno = alumno;
+        this.materia = materia;
         Date fecha = new Date(System.currentTimeMillis());
     }
 
