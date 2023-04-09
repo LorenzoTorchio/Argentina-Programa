@@ -30,15 +30,48 @@ public class ListaDeCompras {
         carrito.setItem(index, item);
         index++;
     }
-        System.out.println("el precio de su compra es de $" + carrito.getPrecio() + ".");
-        TestDescuento(carrito);
+
+        if(args.length > 0){
+            String tipoDescuento = args[0];
+            switch (tipoDescuento) {
+                case "Fijo" -> {
+                    Descuento desc = new Descuento.Fijo();
+                    desc.setValorDesc(Float.parseFloat(args[1]));
+                    desc.valorFinal(carrito.getPrecio());
+                    System.out.println("el precio de su compra es de $" +  desc.valorFinal(carrito.getPrecio()));
+                }
+                case "Porcentaje" -> {
+                    Descuento desc = new Descuento.Porcentaje();
+                    desc.setValorDesc(Float.parseFloat(args[1]));
+                    desc.valorFinal(carrito.getPrecio());
+                    System.out.println("el precio de su compra es de $" +  desc.valorFinal(carrito.getPrecio()));
+                }
+                case "PorcentajeTope" -> {
+                    Descuento.PorcentajeTope desc = new Descuento.PorcentajeTope();
+                    desc.setValorDesc(Float.parseFloat(args[1]));
+                    desc.setTope(Float.parseFloat(args[2]));
+                    System.out.println("el precio de su compra es de $" +  desc.valorFinal(carrito.getPrecio()));
+                }
+            }
+        }
+
+        System.out.println("el precio de su compra es de $" + carrito.getPrecio());
+        TestDescuento();
     }
 
-    private static void TestDescuento(Carrito carrito){
+    private static void TestDescuento(){
+        Carrito carrito1 = new Carrito(3);
+        carrito1.setItem(0, new ItemCarrito(new Producto("papa", 130), 3));
+        carrito1.setItem(1, new ItemCarrito(new Producto("desodorante", 2000), 2));
+        carrito1.setItem(2, new ItemCarrito(new Producto("yerba", 600), 1));
+        Assertions.assertEquals(4990.0,carrito1.getPrecio());
 
-        float ValorInicial = carrito.getPrecio();
-        Assertions.assertEquals(1300,ValorInicial);
+        Carrito carrito2 = new Carrito(2);
+        carrito2.setItem(0, new ItemCarrito(new Producto("jabon",400),1));
+        carrito2.setItem(1, new ItemCarrito(new Producto("cuchillo",700),2));
+        Assertions.assertEquals(1800.0,carrito2.getPrecio());
 
+        float ValorInicial = 1300.0F;
         Descuento desc1 = new Descuento.Fijo();
         desc1.setValorDesc(12.0F);
         Assertions.assertEquals(1288.0,desc1.valorFinal(ValorInicial));
@@ -47,9 +80,9 @@ public class ListaDeCompras {
         desc2.setValorDesc(10.0F);
         Assertions.assertEquals(1170.0,desc2.valorFinal(ValorInicial));
 
-        Descuento desc3 = new Descuento.PorcentajeTope();
+        Descuento.PorcentajeTope desc3 = new Descuento.PorcentajeTope();
         desc3.setValorDesc(10.0F);
-        ((Descuento.PorcentajeTope) desc3).setTope(5.0F);
+        desc3.setTope(5.0F);
         Assertions.assertEquals(1235.0,desc3.valorFinal(ValorInicial));
     }
 
