@@ -1,23 +1,50 @@
 package paquete;
 
-public class Descuento{
-    class DescuentoPorcentaje extends Descuento{
-        public static float getDescuento(float precio, int descuento) {
-            return precio - (precio * descuento / 100);
+public abstract class Descuento{
+    private float valor;
+    public float getValorDesc() {
+        return valor;
+    }
+    public void setValorDesc(float valor) {
+        this.valor = valor;
+    }
+    public abstract float valorFinal(float valorInicial);
+
+    public static class Fijo extends Descuento{
+
+        @Override
+        public float valorFinal(float valorInicial) {
+            return valorInicial - this.getValorDesc();
         }
     }
 
-    class DescuentoFijo extends Descuento{
-        public static float getDescuento(float precio, int descuento){
-            return precio - descuento;
+    public static class Porcentaje extends Descuento{
+        @Override
+        public float valorFinal(float valorInicial) {
+            return valorInicial - (valorInicial * this.getValorDesc() / 100);
         }
     }
-    class DescuentoPorcentajeConTope extends DescuentoPorcentaje{
-        public static float getDescuento(float precio, int descuentoPorcentaje, int tope) {
-            if (descuentoPorcentaje > tope){
-                descuentoPorcentaje = tope;
+
+
+    public static class PorcentajeTope extends Descuento {
+        private float tope;
+
+        public void setTope(float tope){
+            this.tope = tope;
+        }
+
+        public float getTope(){
+            return this.tope;
+        }
+
+
+        @Override
+        public float valorFinal(float valorInicial) {
+            float desc = this.getValorDesc();
+            if ( desc > this.getTope()){
+                desc = this.getTope();
             }
-            return precio - (precio * descuentoPorcentaje / 100);
+            return valorInicial - (valorInicial * desc / 100);
         }
     }
 

@@ -5,6 +5,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import paquete.*;
 
+import org.junit.jupiter.api.Assertions;
+
+
 public class ListaDeCompras {
     public static void main(String[] args) throws IOException {
     Path archivo = Paths.get("lista.txt");
@@ -28,7 +31,26 @@ public class ListaDeCompras {
         index++;
     }
         System.out.println("el precio de su compra es de $" + carrito.getPrecio() + ".");
+        TestDescuento(carrito);
+    }
 
+    private static void TestDescuento(Carrito carrito){
+
+        float ValorInicial = carrito.getPrecio();
+        Assertions.assertEquals(1300,ValorInicial);
+
+        Descuento desc1 = new Descuento.Fijo();
+        desc1.setValorDesc(12.0F);
+        Assertions.assertEquals(1288.0,desc1.valorFinal(ValorInicial));
+
+        Descuento desc2 = new Descuento.Porcentaje();
+        desc2.setValorDesc(10.0F);
+        Assertions.assertEquals(1170.0,desc2.valorFinal(ValorInicial));
+
+        Descuento desc3 = new Descuento.PorcentajeTope();
+        desc3.setValorDesc(10.0F);
+        ((Descuento.PorcentajeTope) desc3).setTope(5.0F);
+        Assertions.assertEquals(1235.0,desc3.valorFinal(ValorInicial));
     }
 
 }

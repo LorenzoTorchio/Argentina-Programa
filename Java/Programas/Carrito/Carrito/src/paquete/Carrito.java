@@ -1,7 +1,8 @@
 package paquete;
 
 public class Carrito {
-    private ItemCarrito[] carrito;
+    private final ItemCarrito[] carrito;
+
 
     public Carrito(int espacio) {
         this.carrito = new ItemCarrito[espacio];
@@ -14,8 +15,8 @@ public class Carrito {
 
     public float getPrecio() {
         float precio = 0;
-        for (int i = 0; i < carrito.length; i++) {
-            precio += carrito[i].precioItem();
+        for (ItemCarrito itemCarrito : carrito) {
+            precio += itemCarrito.precioItem();
         }
         return precio;
     }
@@ -23,8 +24,8 @@ public class Carrito {
     @Override
     public String toString() {
         String lista = "";
-        for (int i = 0; i < carrito.length; i++) {
-            lista = lista + carrito[i].toString() + "\n";
+        for (ItemCarrito itemCarrito : carrito) {
+            lista = lista + itemCarrito.toString() + "\n";
         }
         return lista;
     }
