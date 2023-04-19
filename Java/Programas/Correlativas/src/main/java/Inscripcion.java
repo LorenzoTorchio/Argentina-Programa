@@ -10,9 +10,7 @@ public class Inscripcion {
         Date fecha = new Date(System.currentTimeMillis());
     }
 
-
-
     public boolean aprobada(){
-        return true;
+        return this.materia.puedeCursar(this.alumno);
     }
 }

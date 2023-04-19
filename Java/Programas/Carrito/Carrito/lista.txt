@@ -1,2 +1,2 @@
-vaso 500 2
-jugo 100 3
+vaso 0 2
+jugo 0 3
