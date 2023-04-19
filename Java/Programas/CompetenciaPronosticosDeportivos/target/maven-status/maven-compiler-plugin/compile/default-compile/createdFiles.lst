@@ -1,0 +1,8 @@
+Configuracion\Puntaje.class
+Entidades\Partido.class
+Entidades\Persona.class
+Entidades\ResultadoEnum.class
+Configuracion\BaseDeDatos.class
+Entidades\Pronostico.class
+Entidades\Equipo.class
+App.class
